@@ -212,31 +212,53 @@ export default class ControlPane extends React.Component {
             const key = i18n ? `${locale}_${i}` : i;
 
             return (
-              <EditorControl
-                key={key}
-                field={field}
-                value={getFieldValue({
-                  field,
-                  entry,
-                  locale,
-                  isTranslatable,
-                })}
-                fieldsMetaData={fieldsMetaData}
-                fieldsErrors={fieldsErrors}
-                onChange={(field, newValue, newMetadata) => {
-                  onChange(field, newValue, newMetadata, i18n);
-                }}
-                onValidate={onValidate}
-                processControlRef={this.controlRef.bind(this)}
-                controlRef={this.controlRef}
-                entry={entry}
-                collection={collection}
-                isDisabled={isDuplicate}
-                isHidden={isHidden}
-                isFieldDuplicate={field => isFieldDuplicate(field, locale, defaultLocale)}
-                isFieldHidden={field => isFieldHidden(field, locale, defaultLocale)}
-                locale={locale}
-              />
+              <>
+                <div data-rahul="remove-this-later">
+                  <div>//@Rahul-2 = key and field from config</div>
+                  <div>{key}</div>
+                  <br />
+                  <div>{field}</div>
+                  <br />
+
+                  <div>
+                    OUTPUT FROM EDITOR ={' '}
+                    {JSON.stringify(
+                      getFieldValue({
+                        field,
+                        entry,
+                        locale,
+                        isTranslatable,
+                      }),
+                    )}
+                  </div>
+                </div>
+
+                <EditorControl
+                  key={key}
+                  field={field}
+                  value={getFieldValue({
+                    field,
+                    entry,
+                    locale,
+                    isTranslatable,
+                  })}
+                  fieldsMetaData={fieldsMetaData}
+                  fieldsErrors={fieldsErrors}
+                  onChange={(field, newValue, newMetadata) => {
+                    onChange(field, newValue, newMetadata, i18n);
+                  }}
+                  onValidate={onValidate}
+                  processControlRef={this.controlRef.bind(this)}
+                  controlRef={this.controlRef}
+                  entry={entry}
+                  collection={collection}
+                  isDisabled={isDuplicate}
+                  isHidden={isHidden}
+                  isFieldDuplicate={field => isFieldDuplicate(field, locale, defaultLocale)}
+                  isFieldHidden={field => isFieldHidden(field, locale, defaultLocale)}
+                  locale={locale}
+                />
+              </>
             );
           })}
       </ControlPaneContainer>

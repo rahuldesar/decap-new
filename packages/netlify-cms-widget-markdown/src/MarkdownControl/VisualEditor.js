@@ -16,6 +16,7 @@ import Toolbar from '../MarkdownControl/Toolbar';
 import { renderBlock, renderInline, renderMark } from './renderers';
 import plugins from './plugins/visual';
 import schema from './schema';
+import CustomEditorJS from './components/CustomEditorJS';
 
 function visualEditorStyles({ minimal }) {
   return `
@@ -224,12 +225,14 @@ export default class Editor extends React.Component {
 
   render() {
     const { onAddAsset, getAsset, className, field, isShowModeToggle, t, isDisabled } = this.props;
+
     return (
       <div
         css={coreCss`
           position: relative;
         `}
       >
+        <CustomEditorJS value={this.state.value} />
         <EditorControlBar>
           <Toolbar
             onMarkClick={this.handleMarkClick}

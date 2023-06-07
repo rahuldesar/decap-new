@@ -97,6 +97,7 @@ module.exports = {
           'error',
           { functions: false, classes: true, variables: true },
         ],
+        requireConfigFile: true,
       },
     },
     {

@@ -13,6 +13,7 @@ import { lengths, fonts } from 'netlify-cms-ui-default';
 import { markdownToHtml } from '../serializers';
 import { editorStyleVars, EditorControlBar } from '../styles';
 import Toolbar from './Toolbar';
+import CustomEditorJS from './components/CustomEditorJS';
 
 function rawEditorStyles({ minimal }) {
   return `
@@ -119,6 +120,7 @@ export default class RawEditor extends React.Component {
     const { className, field, isShowModeToggle, t } = this.props;
     return (
       <RawEditorContainer>
+        <CustomEditorJS value={this.state.value} />
         <EditorControlBar>
           <Toolbar
             onToggleMode={this.handleToggleMode}
